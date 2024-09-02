@@ -1,0 +1,84 @@
+\subsubsubsection{Search dishes}
+
+% the description of the resource
+
+This endpoint will search for dishes according to the different parameters provided.
+
+\begin{itemize}
+	\item \textbf{URL:} \\\\\texttt{/dishes}
+	\item \textbf{Method:} \\\\\texttt{GET}
+	\item \textbf{URL Parameters:}\\\\
+	\textbf{Optional:}\\\\
+	restaurant\_id=[integer]\\\\
+	diet=[string]
+	\item \textbf{Data Parameters:} \\\\None
+	\item \textbf{Success Response:}
+	\begin{itemize}
+		\item[$\circ$] \textbf{Code:} 200 OK
+		\item[] \textbf{Content:}
+		\begin{lstlisting}[language=json]
+		{
+    "dishes": [
+        {
+            "dish": {
+                "dish_id": 4,
+                "name": "Asado",
+                "price": 15.0,
+                "isDeleted": false,
+                "restaurant": 3
+            }
+        },
+        {
+            "dish": {
+                "dish_id": 6,
+                "name": "Choripan",
+                "price": 10.0,
+                "isDeleted": false,
+                "restaurant": 3
+            }
+        }		
+	}
+		\end{lstlisting}
+	\end{itemize}
+	
+    \item \textbf{Error Response:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 400 Bad Request
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot read the restaurant: wrong format for URI /restaurant/{restaurant_id}.",
+			"error-code": "EP00",
+			"error-details": "Cannot read the restaurant: wrong format for URI /restaurant/{restaurant_id}."
+		}
+	}
+			\end{lstlisting}
+OR
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot list dish(es): unexpected database error.",
+			"error-code": "ED00",
+			"error-details": "Cannot list dish(es): unexpected database error."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	\item \textbf{Sample Call:}
+	\medskip
+	\begin{lstlisting}[language=json]
+	var settings = {
+		"url": "http://localhost/pl8s/rest/dishes/",
+		"method": "GET",
+		"timeout": 0,
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+	\end{lstlisting}
+	
+\end{itemize}

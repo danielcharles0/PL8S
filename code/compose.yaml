@@ -1,0 +1,72 @@
+services:
+  # mvn:
+  #   build:
+  #     context: .
+  #     dockerfile: ./dockerfiles/web.dockerfile
+  #     target: maven
+  #   image: maven
+  #   container_name: maven
+  #   volumes:
+  #     - "./PL8S:/home"
+  #     - "./volumes/maven/.m2:/root/.m2"
+  #   entrypoint: ["mvn"]
+  web:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/web.dockerfile
+    image: pl8sweb
+    container_name: pl8sweb
+    volumes:
+      - "./volumes/pl8sweb/logs:/usr/local/tomcat/logs/pl8s"
+      # Just for development
+      # - "./PL8S/src/main/webapp:/usr/local/tomcat/webapps/pl8s:ro"
+      # - "/usr/local/tomcat/webapps/pl8s/WEB-INF"
+      # - "/usr/local/tomcat/webapps/pl8s/META-INF"
+      # End just for development
+    ports:
+      - "80:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+      stripe:
+        condition: service_started
+  db:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/db.dockerfile
+    image: pl8sdb
+    container_name: pl8sdb
+    env_file:
+      - ./env/pl8sdb.env
+    volumes:
+      - "./volumes/pl8sdb/data:/var/lib/postgresql/data:delegated"
+    healthcheck:
+      # https://www.postgresql.org/docs/current/app-pg-isready.html
+      test: ["CMD-SHELL", "pg_isready -U pl8sdbuser -d pl8sdb"]
+      interval: 5s
+      timeout: 10s
+      retries: 50
+      start_period: 10s
+  # reference: https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html
+  pgadmin:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/pgadmin.dockerfile
+    image: pl8spgadmin
+    container_name: pl8spgadmin
+    ports:
+      - "8080:80"
+    env_file:
+      - ./env/pl8spgadmin.env
+    volumes:
+      - "./volumes/pl8sdbadmin/pgadmin:/var/lib/pgadmin"
+    depends_on:
+      db:
+        condition: service_healthy
+  # reference: https://docs.stripe.com/cli
+  stripe:
+    image: stripe/stripe-cli:latest
+    container_name: pl8stripecli
+    env_file:
+      - ./env/stripe.env
+    command: listen --events payment_intent.succeeded --forward-to web:8080/pl8s/rest/order/payment

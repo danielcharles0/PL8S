@@ -1,0 +1,304 @@
+/* Useful for forms where all the fields are displayed one next to the other*/
+form.condensed-form{
+    display: flex;
+    /*flex-wrap: wrap;*/
+    flex-flow: column;
+    row-gap: 20px;
+    column-gap: 10px;
+    flex-grow: 2;
+
+}
+
+/*Input elements for the condensed form*/
+form.condensed-form .input_element {
+    padding: 8px 16px 8px 16px;
+    border-radius: 10px;
+    background-color: white;
+    /*width: auto;*/
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-overflow: ellipsis;
+}
+
+form.condensed-form div.bigger{
+    margin-right:20px;
+}
+div.hours-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+/* This is needed to place the label on top of the text box*/
+form.condensed-form div.input-label-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+/*This will be displayed only in the edit  restaurant page for admin */
+form.condensed-form div.div_manager_email {
+    display: none;
+}
+form.condensed-form label{
+    margin-right: 3px;
+    margin-left: 3px;
+    font-weight: 550;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: orange;
+    border-radius: 20px;
+}
+
+
+/*
+This wrapper contains an input box with a small plus button
+ */
+div.input_with_button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+}
+/*
+This is needed to make the input element scale well together with the plus button
+ */
+div.input_with_button input, div.input_with_button select{
+    flex-grow: 2;
+    width:99%;
+}
+/* Advanced search*/
+form.search-advanced-option{
+    display: flex;
+    align-items: baseline;
+    margin-top: 1%;
+    margin-left: 1%;
+    gap: 3%;
+}
+form.search-advanced-option label {
+    font-size: 14px ;
+}
+form.search-advanced-option label.important{
+    font-weight: 1000;
+}
+form.search-form{
+    display: flex;
+    align-items: center;
+    gap: 1%;
+}
+
+/*Advanced search search box*/
+input[type="search"].search_input{
+    border: 1px solid var(--stroke-light);
+    border-radius: 10px;
+    flex-basis: 90%;
+    padding: 8px 16px 8px 16px;
+    font-size: 14px;
+    font-style: normal;
+    text-overflow: ellipsis;
+
+}
+
+/*This is used for the cuisine types select under the search box that is bigger in size */
+form.search-advanced-option .input_element {
+    /*padding-left: 5px;*/
+    padding: 3px 6px 3px 6px; /*14px 5px 14px;*/
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    width: auto;
+}
+
+/* Form of inputs */
+.input_form {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Block of instruction and input */
+.input_block {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Instruction above inputs */
+.instruction_text {
+    margin-bottom: 1%;
+
+
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 16px;
+
+    color: black;
+}
+
+/* Text Input */
+.text_input {
+    width: 100%;
+    padding: 8px;
+    margin-left: -8px; /* readjust due to padding for centering the item */
+
+    align-self: center;
+
+    background: var(--white-background);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+/* block containing text input and eventually eye icon */
+.text_block{
+    width: 60%;
+    align-self: center;
+    display: table;
+}
+
+/* Login Text-title*/
+.form_title_login {
+    flex: 1;
+    font-weight: 600;
+    color: black;
+
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.form_title_register {
+    font-weight: 600;
+    color: black;
+    align-self: center;
+
+    font-size: 24px;
+    line-height: 24px;
+}
+
+form.edit {
+	width: 98%;
+	margin: auto;
+	overflow: auto;
+}
+
+div.field {
+	float: left;
+	width: 33%;
+}
+
+div.field.ingredient {
+	clear: both;
+	width: 100%;
+}
+
+div.field span {
+	margin-top: 25px;
+	padding-bottom: 10px;
+	display: block;
+	color: #000;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+div.field input[type="text"], div.field input[type="number"], div.field select, div.field textarea {
+	padding: 9px 16px;
+	color: #000;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px; /* 125% */
+	box-sizing: border-box;
+	width: 97%;
+	border: 1px solid;
+	border-radius: 10px;
+}
+
+div.field select {
+	-webkit-appearance: initial;
+}
+
+div.txtarea {
+	width: 99%;
+}
+
+div.field textarea {
+	width: 99%;
+	height: 58px;
+	resize: none;
+}
+
+div.field input[type="number"]::-webkit-inner-spin-button {
+	display: none;
+}
+
+div.field input[type="text"].ingredient, div.field select.ingredient {
+	width: 15%;
+	margin-right: 20px;
+	margin-top: 10px;
+}
+
+div.field input[type="text"].ingredient {
+	min-width: 180px;
+}
+
+div.field select.ingredient {
+	width: 10%;
+	min-width: 130px;
+}
+
+div.field li:first-child input[type="text"].ingredient, div.field li:first-child select.ingredient {
+	margin-right: 20px;
+	margin-top: 0;
+}
+
+ul#ingredients li {
+	min-width: 350px;
+	overflow-x: auto;
+}
+
+/* Responsiveness*/
+@media only screen and (max-width: 480px) {
+     form.search-advanced-option {
+        flex-direction: column;
+    }
+    .input_element{
+        margin-bottom: 10px;
+    }
+    input[type="search"].search_input{
+        width: 100%;
+        margin-bottom: 10px;
+
+    }
+    form.search-form{
+        flex-direction: column;
+    }
+    .diet-radio-block{
+        display: inline;
+    }
+
+    form.condensed-form div.hours-wrapper{
+        flex-direction: column;
+        row-gap: 20px;
+        margin-right: 20px;
+
+
+    }
+
+}

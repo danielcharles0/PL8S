@@ -1,0 +1,82 @@
+\subsubsubsection{Update cart dish quantity}
+
+% the description of the resource
+
+This endpoint will update the dish quantity.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/order/dishes/\{dishId\}}
+    \item \textbf{Method:} \\\\\texttt{PUT}
+    \item \textbf{URL Parameters:} \\\\
+	\textbf{Required:}\\\\
+	dishId=[integer]
+    \item \textbf{Data Parameters:}
+    \begin{lstlisting}[language=json]
+	{
+    	"quantity": 4
+	}
+	\end{lstlisting}
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\medskip
+			\begin{lstlisting}[language=json]
+	{
+		"order_dish": {
+			"order": 9,
+			"dish": 6,
+			"quantity": 4
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot authenticate the user.",
+			"error-code": "EF00",
+			"error-details": "No authorization header sent."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	OR
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 400 Bad Request
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot update the OrderDish. Invalid input parameters.",
+			"error-code": "EP00",
+			"error-details": "Quantity must be greater than zero."
+		}
+	}		
+			\end{lstlisting}
+		\end{itemize}
+    					
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+	var settings = {
+		"url": "http://localhost/pl8s/rest/order/dishes/6",
+		"method": "PUT",
+		"timeout": 0,
+		"headers": {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjMsInJvbCI6ImN1c3RvbWVyI iwic3RyIjoiY3VzX1B3OHJKbmd5eldOcmZ5IiwiZGF0IjoxNzE0MzQyNjAxNjMwfQ.RrH8oj pudntUVEZVnbvVw1GpUEU56tdnhnCSrnCqoHgUAwMMxXJDcTMfKazQmrIZ_OSfges7-lECny 6p-t5ITA"
+		},
+		"data": JSON.stringify({
+			"quantity": 4
+		}),
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+	\end{lstlisting}
+  \end{itemize}		

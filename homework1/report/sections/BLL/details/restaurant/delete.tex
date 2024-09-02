@@ -1,0 +1,76 @@
+\subsubsubsection{Delete restaurant}
+
+% the description of the resource
+
+This endpoint will delete an existing restaurant.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/restaurant/delete}
+    \item \textbf{Method:} \\\\\texttt{DELETE}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}
+	\begin{lstlisting}[language=json]
+		{
+			"restaurant": {
+				"restaurant_id": 15
+			}
+		}
+	\end{lstlisting}
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"restaurant": {
+			"restaurant_id": 15,
+			"name": "Da Pilio e Frapiero",
+			"description": "Buonissimo a Montegrotto",
+			"manager": 2,
+			"opening_at": "17:00:00",
+			"closing_at": "23:00:00",
+			"countries": [],
+			"cuisine_types": []
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	
+    \item \textbf{Error Response:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 400 Bad Request
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Unable to retrieve the manager of the restaurant.",
+			"error-code": "EP00",
+			"error-details": "Restaurant not found."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+    \item \textbf{Sample Call:}
+		\medskip
+		\begin{lstlisting}[language=json]
+	var settings = {
+	    "url": "http://localhost/pl8s/rest/restaurant/delete",
+	    "method": "DELETE",
+	    "timeout": 0,
+	    "headers": {
+	        "Content-Type": "application/json",
+	        "Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjIsInJvbCI6Im1hbmFnZXIiLCJ zdHIiOiJjdXNfUHc4cUNVWTg4V2gyMG4iLCJkYXQiOjE3MTQyNTgzOTA0MzV9.VB8_-34BvEUc sM6gVZl0C7q8W3SX767BErL9Nx_1rKluRrwkxi8Oy_9loyRLah6faQaO2hsQa3uxNBDpZYUjBQ"
+	    },
+	    "data": JSON.stringify({
+	        "restaurant": {
+	            "restaurant_id": 15
+	        }
+	    }),
+	};
+
+	$.ajax(settings).done(function (response) {
+	    console.log(response);
+	});
+		\end{lstlisting}
+    
+\end{itemize}

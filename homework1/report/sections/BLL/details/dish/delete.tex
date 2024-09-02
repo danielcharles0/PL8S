@@ -1,0 +1,86 @@
+\subsubsubsection{Delete dish}
+
+% the description of the resource
+
+This endpoint will soft delete a dish from a restaurant.
+
+\begin{itemize}
+	\item \textbf{URL:} \\\\\texttt{/dish}
+	\item \textbf{Method:} \\\\\texttt{DELETE}
+	\item \textbf{URL Parameters:} \\\\None
+	\item \textbf{Data Parameters:}
+	\begin{lstlisting}[language=json]	
+	{	
+		"dish": {
+			"dish_id": 15,
+			"restaurant": 2
+		}			
+	}
+	\end{lstlisting}
+	\item \textbf{Success Response:}
+	\begin{itemize}
+		\item[$\circ$] \textbf{Code:} 200 OK
+		\item[] \textbf{Content:}
+		\begin{lstlisting}[language=json]
+	{
+		"dish": {
+			"dish_id": 15,
+			"name": "pasticcio",
+			"price": 15.0,
+			"isDeleted": true,
+			"restaurant": 2
+		}
+	}
+		\end{lstlisting}
+	\end{itemize}
+	
+	\item \textbf{Error Responses:}
+	\begin{itemize}
+		\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+		\item[] \textbf{Content:}
+		\begin{lstlisting}[language=json]	
+	{
+		"message": {
+			"message": "Cannot delete the dish.",
+			"error-code": "ED00",
+			"error-details": "Dish not found."
+		}
+	}
+			
+		\end{lstlisting}		
+		\item[$\circ$] \textbf{Code:} 400 Bad Request
+		\item[] \textbf{Content:}
+		\begin{lstlisting}[language=json]
+			"message": {
+				"message": "Cannot delete the dish: Invalid input parameters.",
+				"error-code": "EP00",
+				"error-details": "Cannot delete the dish: Invalid input parameters.."
+			}
+		\end{lstlisting}
+	
+	\end{itemize}
+	\item \textbf{Sample Call:}
+	\medskip
+	\begin{lstlisting}[language=json]
+	var settings = {
+		"url": "http://localhost/pl8s/rest/dish",
+		"method": "DELETE",
+		"timeout": 0,
+		"headers": {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjIsInJvbCI6Im1hbmFnZXIiLCzd HIiOiJjdXNfUHc4cUNVWTg4V2gyMG4iLCJkYXQiOjE3MTQyNjE3MDA1MjV9.-shbruJiCHs-8md vaswMNs-9CmzyKGNSkX0vCD8IuJnE8jLgfTjGAT-LdrAHEd5uKS8Hpp0Wn-VQ-OSbyqrEGQ"	
+		},
+		"data": JSON.stringify({
+			"dish": {
+				"dish\textunderscore id": 16,
+				"restaurant": 2
+			}
+		}),
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+	\end{lstlisting}
+	
+\end{itemize}

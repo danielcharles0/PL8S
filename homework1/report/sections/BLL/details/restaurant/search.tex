@@ -1,0 +1,79 @@
+\subsubsubsection{Search restaurants}
+
+% the description of the resource
+
+This endpoint will search for registered restaurants.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/restaurants}
+    \item \textbf{Method:} \\\\\texttt{GET}
+    \item \textbf{URL Parameters:}\\\\
+    \textbf{Optional:}\\\\
+	name=[string]\\\\
+	cuisine\_type=[string]
+    \item \textbf{Data Parameters:} \\\\None
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"restaurants": [
+			{
+				"restaurant": {
+					"restaurant_id": 2,
+					"name": "Da Mimmo",
+					"description": "Where the authentic flavors of Napoli come to life in every slice.",
+					"manager": 2,
+					"opening_at": "16:00:00",
+					"closing_at": "22:00:00",
+					"countries": [
+						"Italy"
+					],
+					"cuisine_types": [
+						"pizza"
+					]
+				}
+			},
+			{
+				"restaurant": {
+					"restaurant_id": 13,
+					"name": "Da Pilio e Frapiero",
+					"description": "Buonissimo a Montegrotto",
+					"manager": 2,
+					"opening_at": "17:00:00",
+					"closing_at": "23:00:00",
+					"countries": [
+						"Italy",
+						"Malta",
+						null
+					],
+					"cuisine_types": [
+						"Panini",
+						"insalata",
+						"pasta",
+						"salame"
+					]
+				}
+			}
+		]
+	}
+			\end{lstlisting}
+		\end{itemize}
+	
+    % \item \textbf{Error Response:}
+    \item \textbf{Sample Call:}
+		\medskip
+		\begin{lstlisting}[language=json]
+	var settings = {
+		"url": "http://localhost/pl8s/rest/restaurants",
+		"method": "GET",
+		"timeout": 0,
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+		\end{lstlisting}
+    
+\end{itemize}

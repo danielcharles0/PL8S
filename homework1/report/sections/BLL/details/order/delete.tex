@@ -1,0 +1,73 @@
+\subsubsubsection{Delete dish from the cart}
+
+% the description of the resource
+
+This endpoint will delete the selected dish from the cart.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/order/dishes/\{dishId\}}
+    \item \textbf{Method:} \\\\\texttt{DELETE}
+    \item \textbf{URL Parameters:} \\\\
+	\textbf{Required:}\\\\
+	dishId=[integer]
+    \item \textbf{Data Parameters:} \\\\None
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\medskip
+			\begin{lstlisting}[language=json]
+	{
+		"order_dish": {
+			"order": 11,
+			"dish": 7,
+			"quantity": 1
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot authenticate the user.",
+			"error-code": "EF00",
+			"error-details": "No authorization header sent."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	OR
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot delete the OrderDish.",
+			"error-code": "ED00",
+			"error-details": "OrderDish not found."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+    					
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+	var settings = {
+		"url": "http://localhost/pl8s/rest/order/dishes/7",
+		"method": "DELETE",
+		"timeout": 0,
+		"headers": {
+			"Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjMsInJvbCI6ImN1c3Rvb WVyIiwic3RyIjoiY3VzX1B3OHJKbmd5eldOcmZ5IiwiZGF0IjoxNzE0MzQyNjAxNjMwf Q.RrH8ojpudntUVEZVnbvVw1GpUEU56tdnhnCSrnCqoHgUAwMMxXJDcTMfKazQmrIZ_O Sfges7-lECny6p-t5ITA"
+		},
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+	\end{lstlisting}
+  \end{itemize}		

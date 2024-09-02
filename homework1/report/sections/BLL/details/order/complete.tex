@@ -1,0 +1,74 @@
+\subsubsubsection{Complete order}
+
+% the description of the resource
+
+This endpoint will confirm the cart order.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/order}
+    \item \textbf{Method:} \\\\\texttt{PUT}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}\\\\None
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\medskip
+			\begin{lstlisting}[language=json]
+	{
+		"order": {
+			"order_id": 9,
+			"price": 40.0,
+			"placedOn": "2024-04-28 14:49:51.397295",
+			"status": "completed",
+			"user": 3
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot authenticate the user.",
+			"error-code": "EF00",
+			"error-details": "No authorization header sent."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	OR
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot complete the Order.",
+			"error-code": "ED00",
+			"error-details": "Order not found."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+    					
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+	var settings = {
+		"url": "http://localhost/pl8s/rest/order",
+		"method": "PUT",
+		"timeout": 0,
+		"headers": {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjMsInJvbCI6ImN1c3RvbWVyIiwic3RyI joiY3VzX1B3OHJKbmd5eldOcmZ5IiwiZGF0IjoxNzE0M zQyNjAxNjMwfQ.RrH8ojpudntUVEZVnbvVw 1GpUEU56tdnhnCSrnCqoHgUAwMMxXJDcTMfKazQm rIZ_OSfges7-lECny6p-t5ITA"
+		},
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+	\end{lstlisting}
+  \end{itemize}		

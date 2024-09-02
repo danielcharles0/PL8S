@@ -1,0 +1,24 @@
+/*This icon was used for the back button in a header*/
+i.header-icon{
+    font-size: 28px;
+}
+/*This class of icon was used for the sorting by name toggle for the advanced search*/
+i.settings-icon{
+    font-size: 20px;
+}
+
+i {
+	transition: transform 1s;
+}
+
+i.rotr {
+	transform: rotate(90deg);
+}
+
+i.rotr:hover {
+	cursor: pointer;
+}
+
+i.rotd {
+	transform: rotate(180deg);
+}

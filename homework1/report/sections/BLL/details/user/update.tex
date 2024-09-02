@@ -1,0 +1,114 @@
+\subsubsubsection{Update user}
+
+% the description of the resource
+
+This endpoint will update all the data about a user in the platform.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/user}
+    \item \textbf{Method:} \\\\\texttt{PUT}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}
+	\begin{lstlisting}[language=json]
+    {
+        "user":
+        [   
+            {
+                "user_id": 3,
+                "email": "test15@gmail.com",
+                "password": "7wZUY4+hQYK*bcyP*g",
+                "name": "Daniel",
+                "surname": "Carlesso",
+                "role": "customer"
+            }
+        ]
+    }
+	\end{lstlisting}
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "user": {
+            "user_id": 3,
+            "email": "test15@gmail.com",
+            "name": "Daniel",
+            "surname": "Carlesso",
+            "stripe_id": "cus_Pw8rJngyzWNrfy",
+            "role": "customer"
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 400 Bad Request
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot update the user. Invalid input parameters.",
+            "error-code": "EP00",
+            "error-details": "Invalid password."
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}	
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot authenticate the user.",
+            "error-code": "EF01",
+            "error-details": "JWT expired."
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}		
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot update the user",
+            "error-code": "ED00",
+            "error-details": "Cannot update user: unexpected DB error."
+        }
+    }
+			\end{lstlisting}
+  
+ 
+		\end{itemize}
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+    var settings = {
+      "url": "http://localhost/pl8s/rest/user",
+      "method": "PUT",
+      "timeout": 0,
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjMsInJvbCI6ImN1c3Rv bWVyIiwic3RyIjoiY3VzX1B3OHJKbmd5eldOcmZ5IiwiZGF0IjoxNzE0Mjg0NjAyNzc 4fQ._buJbO5joz8J8j-DlaoQfG7i7lHRrPae05n63TNPwMXfmSKF0zmyjS0exIQpILn VERLVAAD8fS4mCTBkmeYD7A"
+      },
+      "data": JSON.stringify({
+        "user": [
+          {
+            "user_id": 3,
+            "email": 2,
+            "password": "7wZUY4+hQYK*bcyP*g",
+            "name": "Daniel",
+            "surname": "Carlesso",
+            "role": "customer"
+          }
+        ]
+      }),
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+	\end{lstlisting}
+  \end{itemize}		

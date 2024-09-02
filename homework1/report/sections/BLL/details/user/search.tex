@@ -1,0 +1,68 @@
+\subsubsubsection{Search users}
+
+% the description of the resource
+
+This endpoint will search a user by his email address and retrieve all his information. Partial addresses are allowed: e.g "john" instead of "john.dough@email.com".  Only admins can access this API
+
+\begin{itemize}
+	\item \textbf{URL:} \\\\\texttt{/user/email/\{email\}}
+	\item \textbf{Method:} \\\\\texttt{GET}
+	\item \textbf{URL Parameters:}\\\\
+	\textbf{Required:}\\\\
+	email=[string]
+	\item \textbf{Data Parameters:} \\\\None
+	\item \textbf{Success Response:}
+	\begin{itemize}
+		\item[$\circ$] \textbf{Code:} 200 OK
+		\item[] \textbf{Content:}
+		\begin{lstlisting}[language=json]
+    {
+        "users": [
+            {
+                "user": {
+                    "user_id": 2,
+                    "email": "manager.zero@studenti.unipd.it",
+                    "name": "Gino",
+                    "surname": "Bianchi",
+                    "stripe_id": "cus_Pw8qCUY88Wh20n",
+                    "role": "manager"
+                }
+            }
+        ]
+    }
+		\end{lstlisting}
+	\end{itemize}
+	
+	
+    \item \textbf{Error Response:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot search for user(s): unexpected database error.",
+			"error-code": "ED00",
+			"error-details": "Cannot search for user(s): unexpected database error."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+
+	\item \textbf{Sample Call:}
+	    \begin{lstlisting}[language=json]
+    var settings = {
+      "url": "http://localhost/pl8s/rest/user/email/manager",
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjEsInJvbCI6ImFkbWluIiwic3RyIjoi Y3VzX1B3OHAyQlk2YkZYMm1iIiwiZGF0IjoxNzE0MzIwOTY0NzI5fQ.T1y3Lufb8wi1AxP6uymJUrED Ko5dfgUe0seNIdsSw6yGQ_2R0awineJsMSa9TQu6lIy8dSH12JO9LPNzGtVJkg"    
+      },
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+	    \end{lstlisting}
+	
+\end{itemize}

@@ -1,0 +1,25 @@
+\subsection{REST Error Codes}
+
+%If needed, add few lines of text, describing the error codes table
+Here the list of errors defined in the application.
+
+\begin{longtable}{|p{.11\columnwidth}|p{.29\columnwidth}|p{.5\columnwidth}|} 
+\hline
+\textbf{Error Code} & \textbf{HTTP Status Code} & \textbf{Description} \\\hline 
+E5A1 & INTERNAL\textunderscore SERVER\textunderscore ERROR & Unable to serve the REST request \\\hline
+ED00 & INTERNAL\textunderscore SERVER\textunderscore ERROR & Unexpected error while accessing the database \\\hline
+EP00 & BAD\textunderscore REQUEST & Invalid input parameters for the requested resource \\\hline 
+EP01 & NOT\textunderscore FOUND & Unknown resource requested \\\hline 
+EP02 & NOT\textunderscore FOUND & Unexpected error while processing the REST resource \\\hline 
+EP03 & INTERNAL\textunderscore SERVER\textunderscore ERROR & Unrecognized pattern for the requested URI \\\hline 
+EP04 & METHOD\textunderscore NOT\textunderscore ALLOWED & Unsupported operation for the requested method type \\\hline 
+ES00 & INTERNAL\textunderscore SERVER\textunderscore ERROR & Cannot retrieve the user payment methods \\\hline 
+EU00 & INTERNAL\textunderscore SERVER\textunderscore ERROR & Unable to generate password encoding for the user \\\hline 
+EU01 & EMPTY\textunderscore CART & The cart is empty, no information are available on it \\\hline 
+EM00 & BAD\textunderscore REQUEST & Input media type not specified. Content-Type request header missing \\\hline 
+EM01 & BAD\textunderscore REQUEST & Unsupported input media type. Resources are represented only in application/json \\\hline 
+EF00 & UNAUTHENTICATED & Cannot authenticate the user \\\hline 
+EF01 & UNAUTHORIZED & Unauthorized user for the requested resource \\\hline 
+\caption{REST API error codes}
+\label{tab:termGlossary}
+\end{longtable}

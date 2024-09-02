@@ -1,0 +1,31 @@
+/*
+Define the color palette as variables
+
+Example:
+
+h1 {
+    background: var(--grey-background);
+}
+
+*/
+
+:root {
+    --red-background: red;
+    --dark-primary-background: #fe6e00;
+    /*--primary-color-background: #7379ff;
+    --primary-color-background: #ff8515;
+    --primary-color-background: #f6412a;
+    --primary-color-background: #f6610a;*/
+    --primary-color-background: #fe7e00;
+
+    /*--grey-background: #D9D9D9;*/
+    --grey-background: #f0f0f0;
+    /*--darkgrey-background: #BABABA;*/
+    --darkgrey-background: #D9D9D9;
+    /*--white-background: #f0f0f0;*/
+    --white-background: white;
+	--stroke-light: #DEE2E6;
+	--order-dish: #FAFAFA;
+
+    --grey-text-cards: #555;
+}

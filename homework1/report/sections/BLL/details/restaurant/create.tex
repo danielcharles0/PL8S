@@ -1,0 +1,120 @@
+\subsubsubsection{Create restaurant}
+
+% the description of the resource
+
+This endpoint will create a new restaurant in the platform.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/restaurant/create}
+    \item \textbf{Method:} \\\\\texttt{POST}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}
+	\begin{lstlisting}[language=json]
+	{
+	    "restaurant": {
+	        "name": "Da Pilio e Frapiero",
+	        "description": "Buonissimo a Montegrotto",
+	        "opening_at": "17:00:00",
+	        "closing_at": "23:00:00",
+	        "countries": [
+	            "Italy",
+	            "Malta"
+	        ],
+	        "cuisine_types": [
+	            "Panini",
+	            "pasta",
+	            "salame",
+	            "insalata"
+	        ]
+	    }
+	}
+	\end{lstlisting}
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"restaurant": {
+			"name": "Da Pilio e Frapiero",
+			"description": "Buonissimo a Montegrotto",
+			"opening_at": "17:00:00",
+			"closing_at": "23:00:00",
+			"countries": [
+				"Italy",
+				"Malta"
+			],
+			"cuisine_types": [
+				"Panini",
+				"pasta",
+				"salame",
+				"insalata"
+			]
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	
+    \item \textbf{Error Response:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 400 Bad Request
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Input media type not specified.",
+			"error-code": "EM00",
+			"error-details": "Content-Type request header missing."
+		}
+	}
+			\end{lstlisting}
+OR
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Unable to serve the REST request: CREATE_RESTAURANT.",
+			"error-code": "E5A1",
+			"error-details": "Unable to parse JSON: no Restaurant object found."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+    \item \textbf{Sample Call:}
+		\medskip
+		\begin{lstlisting}[language=json]
+	var settings = {
+	    "url": "http://localhost/pl8s/rest/restaurant/create",
+	    "method": "POST",
+	    "timeout": 0,
+	    "headers": {
+	        "Content-Type": "application/json",
+	        "Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjIsInJvbCI6Im1hbmFnZXIiLC JzdHIiOiJjdXNfUHc4cUNVWTg4V2gyMG4iLCJkYXQiOjE3MTQyMjk0NzEzNTh9.83I0YU5yV5 LJA4m4O_VQ1oPtUao40x76nV5FUzocGCOde0ijfe0cVq7BkSvre9--KsgNqgg2eX6jWpquIDB MAA"	    
+	    },
+	    "data": JSON.stringify({
+	        "restaurant": {
+	            "name": "Da Pilio e Frapiero",
+	            "description": "Buonissimo a Montegrotto",
+	            "opening_at": "17:00:00",
+	            "closing_at": "23:00:00",
+	            "countries": [
+	                "Italy",
+	                "Malta"
+	            ],
+	            "cuisine_types": [
+	                "Panini",
+	                "pasta",
+	                "salame",
+	                "insalata"
+	            ]
+	        }
+	    }),
+	};
+
+	$.ajax(settings).done(function (response) {
+	    console.log(response);
+	});
+		\end{lstlisting}
+    
+\end{itemize}

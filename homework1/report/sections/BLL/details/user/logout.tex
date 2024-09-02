@@ -1,0 +1,56 @@
+\subsubsubsection{User Logout}
+
+% the description of the resource
+
+This endpoint will logout the user by retrieving an invalid URF JWT token
+
+\begin{itemize}
+	\item \textbf{URL:} \\\\\texttt{/user/logout}
+	\item \textbf{Method:} \\\\\texttt{GET}
+	\item \textbf{URL Parameters:} \\\\None
+	\item \textbf{Data Parameters:} \\\\None
+	\item \textbf{Success Response:}
+	\begin{itemize}
+		\item[$\circ$] \textbf{Code:} 200 OK
+		\item[] \textbf{Content:}
+		\begin{lstlisting}[language=json]
+    {
+        "jwt": {
+            "access_token": "invalidated",
+            "token_type": "Bearer",
+            "expires_in": 28800
+        }
+    }
+		\end{lstlisting}
+	\end{itemize}
+	
+    \item \textbf{Error Response:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Fatal error while logging out user.",
+            "error-code": "ED00",
+            "error-details": "Cannot log out user: Unexpected error."
+        }
+    }
+			\end{lstlisting}	
+		\end{itemize}
+	\item \textbf{Sample Call:}
+	\begin{lstlisting}[language=json]
+    var settings = {
+      "url": "http://localhost/pl8s/rest/user/logout",
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjIsInJvbCI6Im1hbmFnZXIiLCJzdHI iOiJjdXNfUHc4cUNVWTg4V2gyMG4iLCJkYXQiOjE3MTQyNjE1MTgyNjJ9.8q9hUBBFyssaR94A9xut jKG90LpP4mOGhvVjrzaFbPuSsU9sToBLZC-c1jvhxBrPXKdQyiojprTP_iNHu-ZFzQ"
+      },
+    };
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+	\end{lstlisting}
+	
+\end{itemize}

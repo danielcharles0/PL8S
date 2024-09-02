@@ -1,0 +1,74 @@
+\subsubsubsection{Add dish to the cart}
+
+% the description of the resource
+
+This endpoint will add the selected dish to the cart.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/order/dishes/\{dishId\}}
+    \item \textbf{Method:} \\\\\texttt{POST}
+    \item \textbf{URL Parameters:} \\\\
+	\textbf{Required:}\\\\
+	dishId=[integer]
+    \item \textbf{Data Parameters:} \\\\None
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\medskip
+			\begin{lstlisting}[language=json]
+	{
+		"order_dish": {
+			"order": 9,
+			"dish": 6,
+			"quantity": 1
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot authenticate the user.",
+			"error-code": "EF00",
+			"error-details": "No authorization header sent."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	OR
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot create the OrderDish.",
+			"error-code": "ED00",
+			"error-details": "OrderDish relation already registered."
+		}
+	}		
+			\end{lstlisting}
+		\end{itemize}
+    					
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+	var settings = {
+		"url": "http://localhost/pl8s/rest/order/dishes/6",
+		"method": "POST",
+		"timeout": 0,
+		"headers": {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjMsInJvbCI6ImN1c3 RvbWVyIiwic3RyIjoiY3VzX1B3OHJKbmd5eldOcmZ5IiwiZGF0IjoxNzE0MzQyNjA xNjMwfQ.RrH8ojpudntUVEZVnbvVw1GpUEU56tdnhnCSrnCqoHgUAwMMxXJDcTMfK azQmrIZ_OSfges7-lECny6p-t5ITA"
+		},
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+	\end{lstlisting}
+  \end{itemize}		

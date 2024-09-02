@@ -1,0 +1,9 @@
+\subsection{Other Information}
+
+%if needed write here other details about your Data Logic Layer that cannot be expressed directly through the ER schema
+
+All the entities id's have been chosen to be of type SERIAL for performance reasons, since a JOIN clause performed with an INT value is faster than when performed with a VARCHAR value.\\
+The Dish's attribute \textit{price} must be strictly positive, a direct consequence is that also Order's \textit{price} must be strictly positive.\\
+The Dish's attribute \textit{isDeleted} is set to 0 by default. The dishes can be only softly deleted for guaranteeing an order history to the customer. Instead, if we delete a user, the deletion of the associated orders is guaranteed to avoid foreign key errors. \\
+The \textit{quantity} attribute in the relation between Dish and Order expresses the quantity of each dish in an order, its value must be a strictly positive integer, the default value is set to 1.\\
+The \textit{stripe\_id} in the user entity is generated within the Stripe's context and it is necessary for performing a payment.

@@ -1,0 +1,83 @@
+\subsubsubsection{List dishes in the cart}
+
+% the description of the resource
+
+This endpoint will list all the dishes in the cart.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/order}
+    \item \textbf{Method:} \\\\\texttt{GET}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}\\\\None
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\medskip
+			\begin{lstlisting}[language=json]
+	{
+		"order": {
+			"order_id": 11,
+			"price": 10.0,
+			"placedOn": "2024-04-28 14:49:51.397295",
+			"status": "pending",
+			"user": 3,
+			"dishes": [
+				{
+					"dish": {
+						"dish_id": 6,
+						"name": "Choripan",
+						"price": 10.0,
+						"restaurant": 3,
+						"quantity": 1
+					}
+				}
+			]
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	OR
+	\begin{itemize}
+		\item[$\circ$] \textbf{Code:} 200 OK
+		\item[] \textbf{Content:}
+		\medskip
+		\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Empty cart.",
+			"error-code": "EU01"
+		}
+	}
+		\end{lstlisting}
+	\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot authenticate the user.",
+			"error-code": "EF00",
+			"error-details": "No authorization header sent."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}	
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+	var settings = {
+		"url": "http://localhost/pl8s/rest/order",
+		"method": "GET",
+		"timeout": 0,
+		"headers": {
+			"Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjMsInJvbCI6ImN 1c3RvbWVyIiwic3RyIjoiY3VzX1B3OHJKbmd5eldOcmZ5IiwiZGF0IjoxNzE0M zQyNjAxNjMwfQ.RrH8ojpudntUVEZVnbvVw1GpUEU56tdnhnCSrnCqoHgUAwMM xXJDcTMfKazQmrIZ_OSfges7-lECny6p-t5ITA"
+		},
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+	\end{lstlisting}
+  \end{itemize}		

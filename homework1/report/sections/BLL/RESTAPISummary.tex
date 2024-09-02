@@ -1,0 +1,72 @@
+\subsection{REST API Summary}
+
+All the rest resources are identified through the prefix \textit{/rest}. It will be omitted in the table below.\\
+\\
+There are five kinds of filters:
+
+\begin{enumerate}
+	\item AdminResourceFilter (\textit{ARF}): Protects admin resources
+	\item UserResourceFilter (\textit{URF}): Protects resources owned by the user
+	\item DishResourceFilter (\textit{DRF}): Protects dishes from being modified by a manager other than the owner
+	\item ManagerResourceFilter (\textit{MRF}): Protects manager operations
+	\item RestaurantResourceFilter (\textit{RRF}): Protects restaurants from being modified by a manager other than the owner
+\end{enumerate}
+%
+The URIs can have optional parameters, we identify them by \textit{/parameterName/\{?parameterValue\}}.
+If a parameter has not to be passed, the whole block must be omitted.
+
+\begin{longtable}{|p{.375\columnwidth}|p{.1\columnwidth} |p{.35\columnwidth}|p{.1\columnwidth}|} 
+\hline
+\textbf{URI} & \textbf{Method} & \textbf{Description} & \textbf{Filter} \\\hline
+
+/restaurant/create & POST &  Creates a restaurant & MRF\\\hline
+
+% /restaurant/update & PUT &  Updates restaurant information & RestaurantResourceFilter\\\hline
+
+/restaurant/delete & DELETE &  Deletes a restaurant & RRF\\\hline
+
+/restaurants/name/\{?name\}/cuisine-type/\{?cuisine-type\} & GET &  Retrieves the restaurants information & None\\\hline
+
+/cuisine/types & GET &  List all the cuisine types available in the platform & None\\\hline
+
+/order/dishes/\{dishId\} & POST &  Adds \{dishId\} to the cart & URF\\\hline
+
+/order & PUT &  Confirms the cart order & URF\\\hline
+
+/order/previous & GET &  Lists the user previous orders & URF\\\hline
+
+/order & GET & Retrieves the user cart details & URF\\\hline
+
+/order/dishes/\{dishId\} & PUT & Updates the dish quantity in the cart & URF\\\hline
+
+/order/dishes/\{dishId\} & DELETE & Removes a dish from the cart & URF\\\hline
+
+/order/dishes & DELETE & Removes all dishes from the cart & URF\\\hline
+
+/dishes/restaurant\_id/\{?restaurant\_id\} /name/\{?name\}/diet/\{?diet\} & GET & Lists the dishes & None\\\hline
+
+/dish & POST & Creates a new dish & DRF\\\hline
+
+/dish & DELETE & Deletes a dish & DRF\\\hline
+
+/user/register & POST & Registers a customer user to the platform & None\\\hline
+
+/user/create & POST & Creates a manager user to the platform & ARF\\\hline
+
+/user & PUT & Updates user informations & URF\\\hline
+
+/user/login & GET & Login the user by retrieving a valid JWT token & None\\\hline
+
+/user/logout & GET & Logout the user by retrieving an invalid JWT token & URF\\\hline
+
+/user/delete & DELETE & Deletes a user from the platform & ARF\\\hline
+
+/user/list & GET & Lists the registered users in the platform & ARF\\\hline
+
+/user/email/\{email\} & GET & Retrieves the user informations & ARF\\\hline
+
+/user/cards & GET & Lists user credit cards & URF\\\hline
+
+\caption{REST API description}
+\label{tab:termGlossary}
+\end{longtable}

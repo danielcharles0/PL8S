@@ -1,0 +1,134 @@
+\subsubsubsection{Create Dish}
+
+% the description of the resource
+
+This endpoint will create a new dish for a restaurant.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/dish}
+    \item \textbf{Method:} \\\\\texttt{POST}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}
+	\begin{lstlisting}[language=json]
+    {
+        "dish": {
+            "name": "pasticcio",
+            "price": 15,
+            "restaurant": 2,
+            "ingredients": 
+                [ 
+                    {"name": "uova", "diet": "vegetarian"},
+                    {"name": "besciamella", "diet": "vegetarian"},
+                    {"name": "ragu", "diet": "carnivorous"},
+                    {"name": "radicchio", "diet": "vegan"}
+                ]
+        }
+    }	
+	
+	\end{lstlisting}
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "dish": {
+            "dish_id": 17,
+            "name": "pasticcio",
+            "price": 15.0,
+            "isDeleted": false,
+            "restaurant": 2,
+            "ingredients": [
+                {
+                    "ingredient_id": 38,
+                    "name": "uova",
+                    "diet": "vegetarian"
+                },
+                {
+                    "ingredient_id": 39,
+                    "name": "besciamella",
+                    "diet": "vegetarian"
+                },
+                {
+                    "ingredient_id": 40,
+                    "name": "ragu",
+                    "diet": "carnivorous"
+                },
+                {
+                    "ingredient_id": 41,
+                    "name": "radicchio",
+                    "diet": "vegan"
+                }
+            ]
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}
+	
+    \item \textbf{Error Response:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]	
+		 "message": {
+			"message": "Unable to retrieve the manager of the restaurant that serves this dish.",
+			"error-code": "EP00",
+			"error-details": "Restaurant not found."
+		}
+	
+			\end{lstlisting}
+OR
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+		"message": {
+			"message": "Cannot create the dish.",
+			"error-code": "ED00",
+			"error-details": "Cannot create dish.."
+		}
+			\end{lstlisting}
+		\end{itemize}
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]
+    var settings = {
+      "url": "http://localhost/pl8s/rest/dish",
+      "method": "POST",
+      "timeout": 0,
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjIsInJvbCI6Im1hbmFnZXIiLCJz dHIiOiJjdXNfUHc4cUNVWTg4V2gyMG4iLCJkYXQiOjE3MTQyODE5NjEwNzV9.aQ-zURTFf9g7D8 5NxijemKgeKmdnfyTPFL2XmpqwoDJCgirZv1P_7sZ4SsXcZ8UjN_ONSSyYwG98SvyxvorNdg"	
+      },
+      "data": JSON.stringify({
+        "dish": {
+          "name": "pasticcio",
+          "price": 15,
+          "restaurant": 2,
+          "ingredients": [
+            {
+              "name": "uova",
+              "diet": "vegetarian"
+            },
+            {
+              "name": "besciamella",
+              "diet": "vegetarian"
+            },
+            {
+              "name": "ragu",
+              "diet": "carnivorous"
+            },
+            {
+              "name": "radicchio",
+              "diet": "vegan"
+            }
+          ]
+        }
+      }),
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+		});				
+		\end{lstlisting}
+    
+\end{itemize}

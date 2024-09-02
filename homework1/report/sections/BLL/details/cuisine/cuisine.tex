@@ -1,0 +1,49 @@
+\subsubsubsection{Cuisine types}
+
+% the description of the resource
+
+This endpoint retrieve the list of cuisine types available in the platform.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/cuisine/types}
+    \item \textbf{Method:} \\\\\texttt{GET}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:} \\\\None
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+	    "cuisinetypes": [
+	        {
+	            "CuisineType": {
+	                "type": "insalata"
+	            }
+	        },
+	        {
+	            "CuisineType": {
+	                "type": "steakhouse"
+	            }
+	        }
+	    ]
+	}
+			\end{lstlisting}
+		\end{itemize}
+	
+    % \item \textbf{Error Response:}
+    \item \textbf{Sample Call:}
+		\medskip
+		\begin{lstlisting}[language=json]
+	var settings = {
+		"url": "http://localhost/pl8s/rest/cuisine/types",
+		"method": "GET",
+		"timeout": 0,
+	};
+
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+		\end{lstlisting}
+    
+\end{itemize}

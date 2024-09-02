@@ -1,0 +1,93 @@
+\subsubsubsection{Register user}
+
+% the description of the resource
+
+This endpoint will register a customer user to the platform.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/user/register}
+    \item \textbf{Method:} \\\\\texttt{POST}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}
+	\begin{lstlisting}[language=json]
+    {
+        "user":
+        [   
+            {
+                "email": "test10@gmail.com",
+                "password": "7wZUY4+hQYK*bcyP*g",
+                "name": "Daniel",
+                "surname": "Carlesso",
+                "role": "customer"
+            }
+        ]
+    }
+	\end{lstlisting}
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "jwt": {
+            "access_token": "eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjksInJvbCI6ImN1c3 RvbWVyIiwic3RyIjoiY3VzX1EwWEVLSDhDd2pNRXBKIiwiZGF0IjoxNzE0MzMzNDg1 MTc0fQ.vNtpcCGGvfoikd6yvy4bORjgUq2Q9bqMnI-1F4duXLoNv _5itOah3WaEnf Rtst0leH0oBs7Y5GEQ75NpWMmngA",
+            "token_type": "Bearer",
+            "expires_in": 28800
+        },
+        "user": {
+            "user_id": 9,
+            "email": "test10@gmail.com",
+            "name": "Daniel",
+            "surname": "Carlesso",
+            "stripe_id": "cus_Q0XEKH8CwjMEpJ",
+            "role": "customer"
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot create the user.",
+            "error-code": "ED00",
+            "error-details": "User already registered."
+        }
+    }
+			\end{lstlisting}
+
+			\item[$\circ$] \textbf{Code:} 400 Bad Request
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot create the user: Invalid input parameters.",
+            "error-code": "EP00",
+            "error-details": "Invalid password."
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+    {
+     "jwt": {
+         "access_token": "eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjksInJvbCI6ImN1c3Rvb WVyIiwic3RyIjoiY3VzX1EwWEVLSDhDd2pNRXBKIiwiZGF0IjoxNzE0MzMzNDg1MTc0fQ .vNtpcCGGvfoikd6yvy4bORjgUq2Q9bqMnI-1F4duXLoNv_5itOah3WaEnfRtst0leH0o Bs7Y5GEQ75NpWMmngA",     
+         "token_type": "Bearer",
+         "expires_in": 28800
+     },
+     "user": {
+         "user_id": 9,
+         "email": "test10@gmail.com",
+         "name": "Daniel",
+         "surname": "Carlesso",
+         "stripe_id": "cus_Q0XEKH8CwjMEpJ",
+         "role": "customer"
+     }
+ }
+	\end{lstlisting}
+  \end{itemize}		

@@ -1,0 +1,687 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Inter");
+
+@import "colors.css";
+@import "buttons.css";
+@import "table.css";
+@import "forms-elements.css";
+@import "icons.css";
+@import "list.css";
+@import "navbar.css";
+
+input, select, textarea, label, button {font-family:Inter, sans-serif;}
+
+h1 {
+	font-family: Raleway, sans-serif;
+	font-size: 24px;
+	font-weight: 600;
+	color: #000;
+}
+
+h1.title {
+	/* margin-left: 1%; */
+	margin-top: 0;
+}
+
+hr {
+	height: 2px;
+	background: #DEE2E6;
+	border: none;
+	width: 100%;
+}
+hr.full {
+	width: 100%;
+}
+header.button_container {
+	overflow: auto;
+}
+
+header.with-back-button{
+	display: flex;
+	gap: 20px;
+	align-items: baseline;
+}
+
+header.search_container {
+	margin-top: 40px;
+}
+/*This allows to have an header on the left and some bottons on the right*/
+header.with_buttons {
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+}
+header.with_buttons_change_password {
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 20px;
+	width: 100%;
+}
+
+article {
+	margin-top: 30px;
+}
+
+article:first-child {
+	margin-top: 0;
+}
+
+section.form_section{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	max-width: 100%;
+	justify-content: space-evenly;
+	gap:20px;
+	margin-right: 6%;
+	margin-left: 9%;
+	margin-top: 30px;
+
+}
+
+h1.form_title {
+	float: left;
+	font-family: Raleway, sans-serif;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 24px;
+	color: black;
+}
+
+h1.form_title_change_password {
+	float: left;
+	font-family: Raleway, sans-serif;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 24px;
+	color: black;
+	padding-top: 20px;
+}
+
+h2.section_title {
+	display: inline;
+	font-family: Inter, sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	color: #000;
+	font-size: 16px;
+	float: left;
+	margin: 0;
+	line-height: 33px;
+}
+
+div.multiple_buttons{
+	display:flex;
+	align-items: baseline;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+/* Background */
+body.login_register {
+	margin: 0;
+	padding: 0;
+	display: grid;
+	align-items: center;
+
+	background-image: url("../media/login_background.jpeg");
+	background-size: cover;
+}
+
+/* Background Box for login.jsp */
+.background_box_login {
+	width: 50%;
+	height: 60%;
+	min-height: 480px;
+	min-width: 320px;
+
+	@media (max-aspect-ratio: 0.8) {
+		height: 40%;
+		width: 80%;
+	}
+
+	justify-self: center;
+	opacity: 95%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background: var(--darkgrey-background);
+	border-radius: 41px;
+}
+
+/* Background Box for register.jsp */
+.background_box_register {
+	width: 50%;
+	height: 60%;
+	min-height: 720px;
+	min-width: 480px;
+	
+	@media (min-aspect-ratio: 1.15) {
+		height: 90%;
+	}
+
+	@media (max-aspect-ratio: 0.75) {
+		width: 90%;
+	}
+
+	justify-self: center;
+	opacity: 95%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+
+	background: var(--darkgrey-background);
+	border-radius: 41px;
+}
+
+/* eye icon for showing password */
+#toggler, #repeatToggler {
+	cursor: pointer;
+
+	float: right;
+
+	margin-top: -19px;
+
+	transform: translateY(-50%);
+}
+
+/* screen area on the right of side bar and below the header, then containing info/content */
+.info_panel {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Footer: login button and register hint */
+.footer_login {
+	flex: 1;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Don’t have an account? Register */
+.register_link {
+	margin-top: 20px;
+
+	font-style: normal;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 16px;
+
+	color: black;
+}
+
+header.order {
+	overflow: auto;
+	background-color: #D9D9D9;
+	padding: 32px 16px;
+	border-radius: 12px;
+}
+
+header.order span {
+	font-family: Inter, sans-serif;
+	font-style: normal;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 24px;
+}
+
+header.order span.left {
+	float: left;
+	padding-left: 50px;
+}
+
+header.order span.right {
+	float: right;
+	padding-right: 50px;
+}
+
+header.order i {
+	float: left;
+	line-height: 24px;
+	vertical-align: middle;
+}
+
+header.order_detail h4 {
+	margin: 0;
+	font-family: Inter, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+}
+
+header.order_detail hr {
+	width: 50%;
+	margin-left: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+.clear {
+	clear: both;
+}
+
+article.body {
+	margin-top: 0;
+}
+
+
+/* restaurant-search and dish-search */
+.cuisine-select {
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	appearance: none;
+	background-color: white;
+	background-image: url('data:image/svg+xml;utf8,<svg fill="%23999" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); /* Custom arrow */
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 10px 10px;
+	font-size: 16px;
+	color: #333;
+	cursor: pointer;
+	outline: none;
+	transition: border-color 0.3s ease;
+}
+
+.card-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 1rem;
+	padding: 1rem;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0 auto; /* Center the container */
+}
+
+.card {
+	border-radius: 12px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	text-align: center;
+	padding: 1rem;
+	box-sizing: border-box;
+	border: 2px solid var(--darkgrey-background);
+	background: var(--grey-background);
+	display: grid;
+}
+
+.card-content {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+}
+
+.card-title-restaurant {
+	cursor: pointer;
+	background: var(--primary-color-background);
+	color: var(--white-background);
+	width: 100%;
+	border-radius: 12px;
+	align-self: center;
+	font-size: 1.4rem;
+	margin: 0 0 8px 0;
+	padding: 2px 8px 2px 8px;
+
+	&:hover {
+		background: var(--dark-primary-background);
+		color: var(--white-background);
+	}
+}
+
+.card-title-dish {
+	width: 100%;
+	font-size: 1.1rem;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#dish_name {
+	text-align: left;
+	align-self: center;
+	margin-right: 8px;
+}
+
+#dish_price {
+	text-align: right;
+	align-self: center;
+}
+
+.card-hours,
+.card-countries,
+.card-cuisines,
+.card-diet,
+.card-price,
+.card-ingredients {
+	font-size: 0.9em;
+	color: var(--grey-text-cards);
+	text-align: left;
+	opacity: 0.8; /* Slightly less opaque than the description */
+	margin: 0 0 2px 0;
+}
+
+.card-price {
+	float: right;
+	color: black;
+}
+
+.card-cuisines {
+	margin: 0 0 10px 0; /* Margin below the cuisines */
+}
+
+.card-description {
+	font-size: 1em;
+	height: 100%;
+	text-align: center;
+	align-self: center;
+	margin: 0;
+}
+
+/* Half horizontal line for cart */
+hr.half_width{
+	width: 50%;
+	float: left;
+	clear: left;
+	margin-left: 1%;
+}
+
+/* Cart item box */
+div.item {
+	display: flex;
+	justify-content: space-evenly;
+	background: var(--grey-background, #F4F6F8);
+	align-items: center;
+	width: 95%;
+	padding: 10px;
+	margin: 12px auto;
+	border-collapse: collapse;
+	border-radius: 12px;
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.40);
+}
+
+/* Dish name paragraph in cart */
+p.item_name {
+	width: 35%;
+	overflow: clip;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+	font-family: Inter, sans-serif;
+	font-size: 14px;
+
+	&:hover {
+		cursor: pointer;
+		color: var(--primary-color-background);
+	}
+
+	&:active {
+		opacity: 0.8;
+	}
+}
+
+/* Container for quantity buttons and pararagraph in cart */
+div.item_quantity {
+	width: 25%;
+	display: flex;
+	align-items: center;
+}
+
+/* Quantity counter paragraph in cart */
+p.quantity_counter {
+	background: var(--white-background);
+	border-radius: 6px;
+	width: 30px;
+	height: 20px;
+	margin-left: 2px;
+	margin-right: 2px;
+	border: 2px solid var(--darkgrey-background);
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	line-height: 20px;
+
+	font-family: Inter, sans-serif;
+	font-size: 14px;
+}
+
+/* Price paragraph in cart */
+p.item_price {
+	width: 10%;
+
+	font-family: Inter, sans-serif;
+	font-size: 14px;
+}
+
+/* Place order div container in cart */
+div.place-order {
+	display: flex;
+	justify-content: space-evenly;
+	background: var(--grey-background, #F4F6F8);
+	align-items: center;
+	width: 95%;
+	padding: 10px;
+	margin: 12px auto;
+	border-collapse: collapse;
+	border-radius: 12px;
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.40);
+}
+
+/* Empty space in place order box for the cart */
+div.empty-space {
+	width: 25%;
+}
+
+/* Total price paragraph for the cart */
+p.total-price {
+	width: 10%;
+
+	font-family: Inter, sans-serif;
+	font-size: 14px;
+}
+
+/* Empty cart div container in empty-cart page */
+div.empty-cart{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+/* Image scaling for empty-cart */
+img.empty-cart-image {
+	width: 350px;
+	height: 350px;
+	padding-top: 4%;
+}
+
+h3#checkout {
+	margin-bottom: 40px;
+}
+
+.fa-solid.fa-trash {
+	cursor: pointer;
+	&:hover{
+		color: var(--primary-color-background);
+	}
+}
+
+div.field.ingredient>span {
+	padding-bottom: 0;
+}
+
+/* Responsive styles */
+@media (min-width: 600px) {
+	.card-title-restaurant {
+		font-size: 1.5rem;
+	}
+
+	.card-title-dish {
+		font-size: 1.2rem;
+	}
+
+	.card-hours,
+	.card-countries,
+	.card-cuisines {
+		font-size: 1em;
+	}
+
+	.card-description {
+		font-size: 1.1em;
+	}
+}
+@media (max-width: 900px){
+	header.order span.right:last-child {
+		clear: both;
+		float: left;
+		padding-left: 66px;
+		padding-right: 0;
+		margin-top: 10px;
+	}
+}
+@media (max-width: 768px){
+	header.search_container {
+		margin-top: 0;
+	}
+}
+/*This unusual breakpoint is needed*/
+@media only screen and (max-width: 578px){
+
+	header.with_buttons,
+	header.with_buttons_change_password {
+		display: flex;
+		flex-basis: 100%;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	div.item {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		justify-items: center;
+	}
+
+	p.item_name {
+		width: 100%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		text-align: center;
+	}
+
+	div.item_quantity {
+		justify-content: center;
+		width: 100%;
+		grid-column: 1;
+		grid-row: 2;
+	}
+
+	p.item_price {
+		text-align: center;
+		width: 100%;
+		grid-column: 2;
+	}
+
+	svg.delete-button {
+		width: 100%;
+	}
+
+	div.place-order {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 0 1fr;
+		justify-items: center;
+	}
+
+	input[type="button"].order_button {
+		width: 95%;
+		grid-column: 1 / 3;
+	}
+
+	p.total-price {
+		text-align: center;
+		width: 100%;
+		grid-column: 1;
+	}
+}
+@media only screen and (max-width: 480px) {
+	span.time {
+		display: block;
+		margin-top: 10px;
+	}
+	h1.form_title{
+		justify-items: center;
+	}
+	section.form_section{
+		flex-direction: column;
+		flex-wrap:nowrap;
+	}
+	.multiple_buttons{
+		flex-direction: column;
+		flex-wrap: nowrap;
+
+	}
+	header.order_detail hr {
+		width: 100%;
+	}
+	header.button_container.dish input[type="submit"].section_button, header.button_container.dish input[type="button"].section_button {
+		clear: both;
+		float: none;
+		display: block;
+		margin: 10px auto 0 auto;
+	}
+	h2.dish.section_title {
+		width: 100%;
+		text-align: center;
+	}
+	form#disheditform.edit div.field {
+		clear: both;
+		float: none;
+		margin: 0 auto;
+		width: 100%;
+	}
+}
+@media (max-width: 380px) {
+	header.order span.right.price {
+		clear: both;
+		float: left;
+		padding-left: 66px;
+		margin-top: 10px;
+	}
+	h2.section_title {
+		clear: both;
+		float: none;
+		text-align: center;
+		width: 100%;
+		display: block;
+		line-height: normal;
+	}
+	a.section_button, input[type="button"].section_button {
+		clear: both;
+		float: none;
+		display: block;
+		margin: 0 auto;
+		line-height: normal;
+		text-align: center;
+		margin-top: 10px;
+	}
+}

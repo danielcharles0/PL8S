@@ -1,0 +1,118 @@
+\subsubsubsection{Previous orders}
+
+% the description of the resource
+
+This endpoint will list all the previous orders.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/order/previous}
+    \item \textbf{Method:} \\\\\texttt{GET}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}\\\\None
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\medskip
+			\begin{lstlisting}[language=json]
+	{
+		"previous orders": [
+			{
+				"order": {
+					"order_id": 1,
+					"price": 22.0,
+					"placedOn": "2024-04-25 06:35:47.873674",
+					"status": "completed",
+					"user": 3,
+					"dishes": [
+						{
+							"dish": {
+								"dish_id": 2,
+								"name": "Diavola",
+								"price": 6.0,
+								"restaurant": 2,
+								"quantity": 1
+							}
+						},
+						{
+							"dish": {
+								"dish_id": 7,
+								"name": "Shrimp with Dill and Lemon",
+								"price": 8.0,
+								"restaurant": 4,
+								"quantity": 2
+							}
+						}
+					]
+				}
+			},
+			{
+				"order": {
+					"order_id": 2,
+					"price": 28.0,
+					"placedOn": "2024-04-25 06:42:51.528244",
+					"status": "completed",
+					"user": 3,
+					"dishes": [
+						{
+							"dish": {
+								"dish_id": 1,
+								"name": "Margherita",
+								"price": 5.0,
+								"restaurant": 2,
+								"quantity": 1
+							}
+						},
+						{
+							"dish": {
+								"dish_id": 5,
+								"name": "Empanadas",
+								"price": 8.0,
+								"restaurant": 3,
+								"quantity": 2
+							}
+						},
+						{
+							"dish": {
+								"dish_id": 9,
+								"name": "Potato, Garlic aioli and Crispy Shallots",
+								"price": 7.0,
+								"restaurant": 4,
+								"quantity": 1
+							}
+						}
+					]
+				}
+			}
+		]
+	}
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot authenticate the user.",
+			"error-code": "EF00",
+			"error-details": "No authorization header sent."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+    					
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+	var settings = {
+		"url": "http://localhost/pl8s/rest/order/previous",
+		"method": "GET",
+		"timeout": 0,
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+	\end{lstlisting}
+  \end{itemize}		

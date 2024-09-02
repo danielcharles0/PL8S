@@ -1,0 +1,73 @@
+\subsubsubsection{List user}
+
+% the description of the resource
+
+This endpoint will list all the users registered in the platform. Only admins can access this API
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/user/list}
+    \item \textbf{Method:} \\\\\texttt{GET}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:} \\\\None
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "users": [
+            {
+                "user": {
+                    "user_id": 2,
+                    "email": "manager.zero@studenti.unipd.it",
+                    "name": "Gino",
+                    "surname": "Bianchi",
+                    "stripe_id": "cus_Pw8qCUY88Wh20n",
+                    "role": "manager"
+                }
+            },
+            {
+                "user": {
+                    "user_id": 3,
+                    "email": "customer.zero@studenti.unipd.it",
+                    "name": "Mario",
+                    "surname": "Rossi",
+                    "stripe_id": "cus_Pw8rJngyzWNrfy",
+                    "role": "customer"
+                }
+            }
+        ]
+    }
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot list user(s): unexpected database error.",
+            "error-code": "ED00",
+            "error-details": "Cannot list user(s): unexpected database error."
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}	
+
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+    var settings = {
+      "url": "http://localhost/pl8s/rest/user/list",
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjEsInJvbCI6ImFkbWluIiwic3Ry IjoiY3VzX1B3OHAyQlk2YkZYMm1iIiwiZGF0IjoxNzE0MzIwOTY0NzI5fQ.T1y3Lufb8wi1AxP6 uymJ UrEDKo5dfgUe0seNIdsSw6yGQ_2R0awineJsMSa9TQu6lIy8dSH12JO9LPNzGtVJkg"
+      },
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+	\end{lstlisting}
+  \end{itemize}		

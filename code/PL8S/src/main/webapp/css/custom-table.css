@@ -1,0 +1,197 @@
+table {
+    border-radius: 5px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.text-container {
+    width: 100%; /* Ensure text-container takes full width */
+    margin-right: 10px;
+    overflow: hidden; /* Hide any content overflow */
+}
+
+.name-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.name {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 4px;
+
+    &:hover {
+        color: var(--primary-color-background);
+    }
+}
+
+.description,
+.ingredients {
+    font-size: 0.9em;
+    color: #666;
+    overflow: hidden; /* Hide any content overflow */
+    white-space: pre-line; /* Allow text to wrap and break line at newline characters */
+}
+
+.profile-image {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border-radius: 0.3rem; /* Makes the image circular */
+    margin-right: 0.5rem;
+}
+
+.option {
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative; /* Add position relative for positioning menu */
+}
+
+.working-hours,
+.diet {
+    color: var(--grey-text-cards);
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    background: var(--primary-color-background);
+    border-radius: 10px;
+}
+
+.menu-item {
+    padding: 0.5rem 2rem 0.5rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #f0f0f0;
+}
+
+.menu-item:hover {
+    border-radius: 10px;
+    background: var(--dark-primary-background);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    table.list {
+        border: none;
+    }
+
+    table.list td {
+        border-bottom: 1px solid #DEE2E6 !important;
+    }
+
+    tbody tr {
+        margin: 1rem 0;
+        border-radius: 7px;
+        border: 1px solid #DEE2E6;
+    }
+
+    tbody tr:first-child {
+        margin: 0 0;
+    }
+
+    th {
+        display: none; /* Hide table headers */
+    }
+
+    td {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .text-container {
+        margin-bottom: 8px;
+    }
+
+    .name-title {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .name {
+        margin-bottom: 4px;
+    }
+
+    .description,
+    .ingredients {
+        margin-bottom: 8px;
+    }
+
+    .working-hours::before,
+    .diet::before,
+    td:nth-of-type(2)::before,
+    td:nth-of-type(3)::before {
+        content: attr(data-title);
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+
+    .option {
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary-color-background);
+        color: white; /* Button text color */
+        border: none;
+        border-radius: 0 0 7px 7px;
+        text-align: center;
+        max-width: 100%;
+        box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    }
+
+    .option:hover {
+        background: var(--primary-color-background);
+    }
+
+    .menu {
+        margin-top: 0.8rem;
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+    }
+
+    .menu-item {
+        padding: 0.5rem;
+        text-align: left;
+        background: var(--primary-color-background);
+    }
+    .menu-item:hover {
+        background: var(--dark-primary-background);
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 578px) {
+    .profile-image {
+        width: 40px;
+        height: 40px;
+        margin-right: 0.5rem;
+    }
+}

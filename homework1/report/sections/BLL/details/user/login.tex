@@ -1,0 +1,89 @@
+\subsubsubsection{User Login}
+
+% the description of the resource
+
+This endpoint will login a user to the platform by retrieving a valid JWT token
+
+\begin{itemize}
+	\item \textbf{URL:} \\\\\texttt{/user/login}
+	\item \textbf{Method:} \\\\\texttt{GET}
+	\item \textbf{URL Parameters:} \\\\None
+	\item \textbf{Data Parameters:} \\\\None
+	\item \textbf{Success Response:}
+	\begin{itemize}
+		\item[$\circ$] \textbf{Code:} 200 OK
+		\item[] \textbf{Content:}
+		\begin{lstlisting}[language=json]
+    {
+        "jwt": {
+            "access_token": "eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjIsInJvbCI6Im1hbmFnZXI iLCJzdHIiOiJjdXNfUHc4cUNVWTg4V2gyMG4iLCJkYXQiOjE3MTQyODI5NDA2MDB9.FtoQG unPFNcmYupNfLS1gsdpPRpv3lb4YlbUB61AfTH8DvuI0ATXOsiXAHvi9P3EhpzoAtvmqBFF Lh88782Z0g",
+            "token_type": "Bearer",
+            "expires_in": 28800
+        },
+        "user": {
+            "user_id": 2,
+            "email": "manager.zero@studenti.unipd.it",
+            "name": "Gino",
+            "surname": "Bianchi",
+            "stripe_id": "cus_Pw8qCUY88Wh20n",
+            "role": "manager"
+        }
+    }
+		\end{lstlisting}
+	\end{itemize}
+	
+    \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 400 Bad Request
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot log in the user: Invalid input parameters.",
+            "error-code": "EP00",
+            "error-details": "Invalid email address."
+        }
+    }
+			\end{lstlisting}
+
+			\item[$\circ$] \textbf{Code:} 400 Bad Request
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot log in the user: Invalid input parameters.",
+            "error-code": "EP00",
+            "error-details": "Invalid password."
+        }
+    }
+			\end{lstlisting}
+			
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot create the user.",
+            "error-code": "ED00",
+            "error-details": "User not found."
+        }
+    }
+			\end{lstlisting}			
+		\end{itemize}
+	\item \textbf{Sample Call:}
+	\begin{lstlisting}[language=json]
+    var settings = {
+      "url": "http://localhost/pl8s/rest/user/login",
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Basic bWFuYWdlci56ZXJvQHN0dWRlbnRpLnVuaXBkLml0OkImc3RNYW5hZ2VyMjAyNA=="
+      },
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+	\end{lstlisting}
+	
+\end{itemize}

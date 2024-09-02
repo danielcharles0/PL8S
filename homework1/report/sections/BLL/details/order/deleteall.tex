@@ -1,0 +1,58 @@
+\subsubsubsection{Empty the cart}
+
+% the description of the resource
+
+This endpoint will empty the cart.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/order/dishes}
+    \item \textbf{Method:} \\\\\texttt{DELETE}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}\\\\None
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\medskip
+			\begin{lstlisting}[language=json]
+	{
+		"order": {
+			"order_id": 11,
+			"price": 0.0,
+			"placedOn": "2024-04-28 14:49:51.397295",
+			"status": "pending",
+			"user": 3
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+	{
+		"message": {
+			"message": "Cannot authenticate the user.",
+			"error-code": "EF00",
+			"error-details": "No authorization header sent."
+		}
+	}
+			\end{lstlisting}
+		\end{itemize}	
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+	var settings = {
+		"url": "http://localhost/pl8s/rest/order/dishes",
+		"method": "DELETE",
+		"timeout": 0,
+		"headers": {
+			"Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjMsInJvbCI6ImN1cRvbW VyIiwic3RyIjoiY3VzX1B3OHJKbmd5eldOcmZ5IiwiZGF0IjoxNzE0MzQyN jAxNjMwf Q.RrH8ojpudntUVEZVnbvVw1GpUEU56tdnhnCSrnCqoHgUAwMMxXJDcT MfKazQmrIZ_ OSfges7-lECny6p-t5ITA"
+		},
+	};
+	
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+	\end{lstlisting}
+  \end{itemize}		

@@ -1,0 +1,784 @@
+{
+	"info": {
+		"_postman_id": "30a94cfc-ab73-4a42-b10a-40e1d4df7256",
+		"name": "pl8s",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34108540",
+		"_collection_link": "https://interstellar-astronaut-359548.postman.co/workspace/pl8s~79654569-ea35-4c3f-834d-f1f58871bda1/collection/34108540-30a94cfc-ab73-4a42-b10a-40e1d4df7256?action=share&source=collection_link&creator=34108540"
+	},
+	"item": [
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "CreateRestaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"restaurant\": {\n        \"name\": \"Da Pilio e Frapiero\",\n        \"description\": \"Buonissimo a Montegrotto\",\n        \"opening_at\": \"17:00:00\",\n        \"closing_at\": \"23:00:00\",\n        \"countries\": [\"Italy\", \"Malta\"],\n        \"cuisine_types\": [\"Panini\", \"pasta\", \"salame\", \"insalata\"]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/restaurant/create",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"restaurant",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchRestaurantByNameByCuisine",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/restaurants",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteRestaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"restaurant\": {\n        \"restaurant_id\": 12\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/restaurant/delete",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"restaurant",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuisine",
+			"item": [
+				{
+					"name": "ListCuisineTypes",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/cuisine/types",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"cuisine",
+								"types"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "CompleteOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{uri}}/order",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListPreviousOrders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/order/previous",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"order",
+								"previous"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListDishesFromOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/order",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddDishToOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{uri}}/order/dishes/6",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"order",
+								"dishes",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateDishQuantity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/order/dishes/6",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"order",
+								"dishes",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteDishFromOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/order/dishes/6",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"order",
+								"dishes",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAllDishesFromOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/order/dishes",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"order",
+								"dishes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dish",
+			"item": [
+				{
+					"name": "DeleteDish",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dish\": {\r\n        \"dish_id\": 1224,\r\n        \"restaurant\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/dish",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"dish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateDish",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dish\": {\n        \"name\": \"pasticcio\",\n        \"price\": 14.5,\n        \"restaurant\": 2,\n        \"ingredients\": \n            [ \n                {\"name\": \"pasta\", \"diet\": \"vegetarian\"},\n                {\"name\": \"besciamella\", \"diet\": \"vegetarian\"},\n                {\"name\": \"ragù\", \"diet\": \"carnivorous\"},\n                {\"name\": \"radicchio\", \"diet\": \"vegan\"}\n            ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/dish",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"dish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchDishesByRestaurantByNameByDiet",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/dishes",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"dishes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"email\": \"test3@gmail.com\",\n        \"password\": \"7wZUY4+hQYK*bcyP*g\",\n        \"name\": \"Luigi\",\n        \"surname\": \"Frigione\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/user/register",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"email\": \"test4@gmail.com\",\n        \"password\": \"7wZUY4+hQYK*bcyP*g\",\n        \"name\": \"Luigi\",\n        \"surname\": \"Frigione\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/user/create",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						},
+						"description": "This endpoint allows you to create a new user. The request should be sent as an HTTP POST to {{uri}}/user/create with the user's email, password, name, surname, and role included in the request body.\n\nThis endpoint is accessible only through an Admin generated token.\n\n### Request Body\n\n- `email` (string): The email of the user.\n- `password` (string): The password for the user's account.\n- `name` (string): The first name of the user.\n- `surname` (string): The last name of the user.\n- `role` (string): The role of the user.\n    \n\n### Response\n\nUpon successful execution, the API returns a status code of 200 and a JSON response with the following structure:\n\n``` json\n{\n    \"jwt\": {\n        \"access_token\": \"\",\n        \"token_type\": \"\",\n        \"expires_in\": 0\n    },\n    \"user\": {\n        \"user_id\": 0,\n        \"email\": \"\",\n        \"name\": \"\",\n        \"surname\": \"\",\n        \"stripe_id\": \"\",\n        \"role\": \"\"\n    }\n}\n\n ```\n\n- `access_token` (string): The access token for the user's session.\n- `token_type` (string): The type of token.\n- `expires_in` (integer): The duration for which the token is valid.\n- `user_id` (integer): The unique identifier for the user.\n- `email` (string): The email of the user.\n- `name` (string): The first name of the user.\n- `surname` (string): The last name of the user.\n- `stripe_id` (string): The unique identifier for the user's Stripe account.\n- `role` (string): The role of the user."
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"email\": \"customer.zero1@studenti.unipd.it\",\n        \"password\": \"pwa2asd9@fjsacaj\",\n        \"name\": \"Luigi\",\n        \"surname\": \"Frigione\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/user",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{customer_pwd}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{customer_username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/user/login",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/user/logout",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"user_id\": 4\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/user/delete",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"user",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListUsers",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/user/list",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"user",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchUserByEmail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "role",
+									"value": "customer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{uri}}/user/email/{{email}}",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"user",
+								"email",
+								"{{email}}"
+							]
+						},
+						"description": "This endpoint makes an HTTP GET request to retrieve user information based on the provided email address. The request should be made to {{uri}}/user/email/{{email}}.  \n\nThis endpoint is accessible only through an Admin generated token.\n\n### Request\n\nThe request uses form-data as the request body type, and it includes the following parameter:\n\n- `role` (text):\n    \n\n### Response\n\nUpon a successful execution (Status: 200), the response will be in JSON format with an array of `users`. Each `user` object contains the following fields:\n\n- `user_id` (number)\n- `email` (string)\n- `name` (string)\n- `surname` (string)\n- `stripe_id` (string)\n- `role` (string)"
+					},
+					"response": []
+				},
+				{
+					"name": "ListUserCreditCards",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/user/cards",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"user",
+								"cards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": []
+}

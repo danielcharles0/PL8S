@@ -1,0 +1,86 @@
+\subsubsubsection{Delete user}
+
+% the description of the resource
+
+This endpoint will delete a user from the platform. Only admins can access this API
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/user/delete}
+    \item \textbf{Method:} \\\\\texttt{DELETE}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}
+	\begin{lstlisting}[language=json]
+    {
+        "user": {
+            "user_id": 4
+        }
+    }
+	\end{lstlisting}
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "user": {
+            "user_id": 4,
+            "email": "test10@gmail.com",
+            "name": "Luigi",
+            "surname": "Frigione",
+            "stripe_id": "cus_Q0UrcvJjv2CFTs",
+            "role": "manager"
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot authenticate the user.",
+            "error-code": "EF00",
+            "error-details": "Bearer authentication is expected."
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}	
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot delete the user.",
+            "error-code": "ED00",
+            "error-details": "User not found."
+        }
+    }
+			\end{lstlisting}
+  
+ 
+		\end{itemize}
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+    var settings = {
+      "url": "http://localhost/pl8s/rest/user/delete",
+      "method": "DELETE",
+      "timeout": 0,
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjEsInJvbCI6ImFkbWluIiwic3RyI joiY3VzX1B3OHAyQlk2YkZYMm1iIiwiZGF0IjoxNzE0MzIwOTY0NzI5fQ.T1y3Lufb8wi1AxP6uy mJUrEDKo5dfgUe0seNIdsSw6yGQ_2R0awineJsMSa9TQu6lIy8dSH12JO9LPNzGtVJkg"                   
+      },
+      "data": JSON.stringify({
+        "user": {
+          "user_id": 4
+        }
+      }),
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+	\end{lstlisting}
+  \end{itemize}		

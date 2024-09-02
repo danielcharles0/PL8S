@@ -1,0 +1,122 @@
+\subsubsubsection{Create user}
+
+% the description of the resource
+
+This endpoint will create a manager user in the platform.
+
+\begin{itemize}
+    \item \textbf{URL:} \\\\\texttt{/user/create}
+    \item \textbf{Method:} \\\\\texttt{POST}
+    \item \textbf{URL Parameters:} \\\\None
+    \item \textbf{Data Parameters:}
+	\begin{lstlisting}[language=json]
+    {
+        "user": {
+            "email": "test4@gmail.com",
+            "password": "7wZUY4+hQYK*bcyP*g",
+            "name": "Luigi",
+            "surname": "Frigione"
+        }
+    }
+	\end{lstlisting}
+    \item \textbf{Success Response:}
+		\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 200 OK
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "jwt": {
+            "access_token": "eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjQsInJvbCI6Im1hbmFnZXI iLCJzdHIiOiJjdXNfUTBISHllVHFHUTlBMFQiLCJkYXQiOjE3MTQyNzQxMjI3NDB9.tmQUn cw2vRxchlJowzwfp7rJSNeA8QvrZEXhYTF_e98Y3iggUqJKFZUr8IWHM7Ypa-txlQecFGN 
+                2xownNw",
+            "token_type": "Bearer",
+            "expires_in": 28800
+        },
+        "user": {
+            "user_id": 4,
+            "email": "test4@gmail.com",
+            "name": "Luigi",
+            "surname": "Frigione",
+            "stripe_id": "cus_Q0HHyeTqGQ9A0T",
+            "role": "manager"
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}
+	   \item \textbf{Error Responses:}
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot authenticate the user.",
+            "error-code": "EF00",
+            "error-details": "Invalid JWT."
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}	
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 401 Unauthorized
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Unauthorized user for the requested resource.",
+            "error-code": "EF01",
+            "error-details": "EF01"
+        }
+    }
+			\end{lstlisting}
+				\end{itemize}
+    
+    	\begin{itemize}
+			\item[$\circ$] \textbf{Code:} 500 Internal Server Error
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot create the user.",
+            "error-code": "ED00",
+            "error-details": "User already registered."
+        }
+    }
+			\end{lstlisting}
+
+			\item[$\circ$] \textbf{Code:} 400 Bad Request
+			\item[] \textbf{Content:}
+			\begin{lstlisting}[language=json]
+    {
+        "message": {
+            "message": "Cannot create the user: Invalid input parameters.",
+            "error-code": "EP00",
+            "error-details": "Invalid password."
+        }
+    }
+			\end{lstlisting}
+		\end{itemize}
+    \item \textbf{Sample Call:}
+		\begin{lstlisting}[language=json]		
+    var settings = {
+      "url": "http://localhost/pl8s/rest/user/create",
+      "method": "POST",
+      "timeout": 0,
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer eyJhcHAiOiJQTDhTIiwiYWxnIjoiSFM1MTIifQ.eyJ1aWQiOjEsInJvbCI6ImFkbWluIiwic3Ry IjoiY3VzX1B3OHAyQlk2YkZYMm1iIiwiZGF0IjoxNzE0Mjc0MDk2MTkyfQ.2JrMhzazmE7qBH6A ASdIJj8C4pK0kjXcT9ZbGDRI5xfo6A_4IUA2oRzZwSzyrGXVEXB_ACCVV3GxONpDySlfvg"     
+      },
+      "data": JSON.stringify({
+        "user": {
+          "email": "test4@gmail.com",
+          "password": "7wZUY4+hQYK*bcyP*g",
+          "name": "Luigi",
+          "surname": "Frigione"
+        }
+      }),
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });	
+	\end{lstlisting}
+  \end{itemize}		

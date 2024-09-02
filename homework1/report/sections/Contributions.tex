@@ -1,0 +1,82 @@
+\section{Group Members Contribution}
+
+% For each group member, describe in detail the contribution to the project.
+
+\begin{description}
+	\item[Manuel Antonutti] contributed to this project by:
+		\begin{enumerate}
+			\item Helping in the ER schema development for the database.
+			\item Creating the mock up for the Cart and PreviousOrders pages in the customer view.
+			\item Creating the FullDish and FullOrder classes in the \textit{dbentities} folder.
+			\item Implementing the ListDishesFromOrder RR and DAO classes.
+			\item Implementing the ListPreviousOrders RR and DAO classes.
+			\item Implementing the AddDishToOrder RR and DAO classes.
+			\item Implementing the UpdateDishQuantity RR and DAO classes.
+			\item Implementing the DeleteDishFromOrder RR and DAO classes.
+			\item Implementing the DeleteAllDishesFromOrder RR and DAO classes.
+			\item Implementing the CompleteOrder RR and DAO classes.
+			\item Implementing all the SQL procedures and functions in \textit{festival-query.sql} for the DAOs above.
+			\item Providing the class diagrams for the project.
+			\item Providing the sequence diagrams for the project.
+		\end{enumerate}
+	\item[Daniel Carlesso] contributed to this project by :
+            \begin{enumerate}
+                \item Helping in the ER schema development and doing the implementation.
+                \item Implementing the initialization of the db and the queries (not all).
+                \item Helping with the mocking in general and focusing more on the user functionalities.
+                \item Implementing the Login/Register/Logout RR and DAO + PasswordGenerator class.
+                \item Implementing the UpdateUser/DeleteUser RR and DAO.
+                \item Implementing the CreateRestaurant/DeleteRestaurant RR and DAO.
+                \item Implementing the CreateDish/DeleteDish RR and DAO.
+                \item Implementing the resource filters + JWT class.
+                \item Implementing the following DAOs used by other RR: CreateCuisinesDAO, CreateIngredientsDAO, GetManagerDAO.
+                \item Filling DLL in the report.
+                \item Filling the admin.tex file for the presentation logic layer.
+            \end{enumerate}
+	\item[Luigi Frigione] contributed to this project by:
+		\begin{enumerate}
+			\item Helping in the ER schema development for the database.
+			\item Designing and implementing the docker configuration.
+			\item Designing and implementing the application database connection with a special user with limited permissions.
+			\item Implementing the first version of ListRestaurants API.
+			\item Studying and configuring \underline{\href{https://stripe.com/en-it}{Stripe}} integration for online payments.
+			\item Implementing list user credit cards API.
+			\item Designing payment API but not implementing it yet since stripe JavaScript library is needed.
+			\item Modifying user register API to be integrated with stripe (on registration we create an associate customer entity on the Stripe ecosystem).
+			\item Debugging and solving all the Javadoc errors.
+			\item Writing the README.md file of the report with the instructions to build and navigate the application.
+			\item Testing the application.
+			\item Writing the documentation of the REST API summary in the HW1 report.
+			\item Writing the documentation of the REST API details for: restaurant (create, search and delete), cuisine types (list) and order (add, remove, update, remove all, complete, list content, list previous).
+		\end{enumerate}
+	\item[Mahshid Shams] contributed to this project by:
+	\begin{enumerate}
+    			\item Participating in the creation of the ER schema database.
+    			\item Designing the user experience and creating a mockup for the Figma.
+    			\item Designing the mockups for the restaurant and the dish, as well as the admin and manager's view of the figma.
+    			\item Implementing the listUserDAO.
+    			\item Implementing the listUser Rest API.
+    			\item Adding real data to the mockups.
+    			\item Writing the documentation of the mockup for Restaurant manager view.
+    			\item Writing the documentation of the mockup for Dish manager view.
+    		\end{enumerate}
+	\item[Nicola Ursino] contributed to this project by:
+		\begin{enumerate}
+		\item Helping in the ER schema development for the database.
+		\item Implementing the logging functionality.
+		\item Helping with the mock up in general and focusing more on the searching functionality.		
+		\item Creating an initial version of the java classes for each db entity.
+		\item Implementing the SearchDishesByRestaurantByNameByDiet REST API and DAO.
+		\item Implementing the SearchRestaurantByNameByCuisine REST API and DAO.
+		\item Implementing the UpdateUser REST API and DAO.
+		\item Implementing the ListUserByEmail REST API and DAO.
+		\item Implementing the ListCuisineTypes REST API and DAO useful for the advanced search.
+		\item Implementing all (except UpdateUser that had already been implemented by Daniel Carlesso) the SQL functions in \textit{festival-query.sql} for the DAOs above.
+		\item Implementing the initial organization of the REST error codes into a java class (RestErrorCodes.java).
+		\item Rebuilding  the RestDispatcherServlet.java from scratch.
+		\item Writing the User View section for the presentation logic layer.
+		\item Writing the documentation of the REST Error Codes for the  business logic layer.
+		\item Writing the documentation of the REST API details for: dish (create, search and delete) and user (register, create, update, login, logout, delete, list, search, list cards).
+	\end{enumerate}
+
+\end{description}
